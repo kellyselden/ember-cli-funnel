@@ -1,28 +1,62 @@
-# Ember-cli-funnel
+# ember-cli-funnel
 [![npm version](https://badge.fury.io/js/ember-cli-funnel.svg)](https://badge.fury.io/js/ember-cli-funnel)
 [![Build Status](https://travis-ci.org/kellyselden/ember-cli-funnel.svg?branch=master)](https://travis-ci.org/kellyselden/ember-cli-funnel)
 
-This README outlines the details of collaborating on this Ember addon.
+Exclude files from an ember build
 
-## Installation
+### Installation
 
-* `git clone` this repository
-* `npm install`
-* `bower install`
+```
+ember install ember-cli-funnel
+```
 
-## Running
+### Example
 
-* `ember serve`
-* Visit your app at http://localhost:4200.
+```js
+// ember-cli-build.js
 
-## Running Tests
+var app = new EmberApp(defaults, {
+  funnel: {
+    exclude: [defaults.project.pkg.name + '/routes/style-guide/**/*']
+  }
+});
+```
 
-* `npm test` (Runs `ember try:testall` to test your addon against multiple Ember versions)
-* `ember test`
-* `ember test --server`
+### Options
 
-## Building
+* `enabled` (bool): defaults to only in production
+* `exclude` (array of globs): defaults to empty array
 
-* `ember build`
+### Advanced Example
 
-For more information on using ember-cli, visit [http://ember-cli.com/](http://ember-cli.com/).
+Exclude route files and router definitions from the `master` branch build
+
+```
+ember install ember-cli-funnel ember-git-version
+npm install git-repo-info --save-dev
+```
+
+```js
+// ember-cli-build.js
+
+var getRepoInfo = require('git-repo-info');
+
+var info = getRepoInfo();
+
+var app = new EmberApp(defaults, {
+  funnel: {
+    enabled: info.branch === 'master',
+    exclude: [defaults.project.pkg.name + '/routes/style-guide/**/*']
+  }
+});
+```
+
+```js
+// app/router.js
+
+if (config.branch !== 'master') {
+  this.route('style-guide', function() {
+    // ...
+  });
+}
+```
