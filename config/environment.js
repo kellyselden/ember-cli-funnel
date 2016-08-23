@@ -2,5 +2,7 @@
 'use strict';
 
 module.exports = function(/* environment, appConfig */) {
-  return { };
+  return {
+    testScenario: process.env.TEST_SCENARIO
+  };
 };
