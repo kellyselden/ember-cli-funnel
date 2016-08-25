@@ -27,12 +27,12 @@ var app = new EmberApp(defaults, {
 * `enabled` (bool): defaults to only in production
 * `exclude` (array of globs): defaults to empty array
 
-### Advanced Example
+### Advanced Example 1
 
 Exclude route files and router definitions from the `master` branch build
 
 ```
-ember install ember-cli-funnel ember-git-version
+ember install ember-git-version
 npm install git-repo-info --save-dev
 ```
 
@@ -59,4 +59,32 @@ if (config.branch !== 'master') {
     // ...
   });
 }
+```
+
+### Advanced Example 2
+
+Exclude different files for different environments
+
+```js
+// ember-cli-build.js
+
+var exclude = [];
+
+switch (EmberApp.env()) {
+  case 'development':
+    exclude.push(defaults.project.pkg.name + '/routes/dev-only/**/*');
+    break;
+  case 'production':
+    exclude.push(defaults.project.pkg.name + '/routes/prod-only/**/*');
+    break;
+  case 'test':
+    exclude.push(defaults.project.pkg.name + '/routes/test-only/**/*');
+    break;
+}
+
+var app = new EmberApp(defaults, {
+  funnel: {
+    exclude: exclude
+  }
+});
 ```
