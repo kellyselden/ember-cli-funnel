@@ -84,6 +84,7 @@ switch (EmberApp.env()) {
 
 var app = new EmberApp(defaults, {
   funnel: {
+    enabled: true,
     exclude: exclude
   }
 });
