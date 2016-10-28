@@ -72,13 +72,10 @@ var exclude = [];
 
 switch (EmberApp.env()) {
   case 'development':
-    exclude.push(defaults.project.pkg.name + '/routes/dev-only/**/*');
-    break;
-  case 'production':
     exclude.push(defaults.project.pkg.name + '/routes/prod-only/**/*');
     break;
-  case 'test':
-    exclude.push(defaults.project.pkg.name + '/routes/test-only/**/*');
+  case 'production':
+    exclude.push(defaults.project.pkg.name + '/routes/dev-only/**/*');
     break;
 }
 
