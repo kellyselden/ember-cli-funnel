@@ -1,4 +1,5 @@
 # ember-cli-funnel
+
 [![npm version](https://badge.fury.io/js/ember-cli-funnel.svg)](https://badge.fury.io/js/ember-cli-funnel)
 [![Build Status](https://travis-ci.org/kellyselden/ember-cli-funnel.svg?branch=master)](https://travis-ci.org/kellyselden/ember-cli-funnel)
 
