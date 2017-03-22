@@ -1,40 +1,40 @@
-/* jshint node: true */
+/* eslint-env node */
 'use strict';
 
-var Funnel = require('broccoli-funnel');
+const Funnel = require('broccoli-funnel');
 
 module.exports = {
   name: 'ember-cli-funnel',
-  included: function(app) {
+  included(app) {
     this.app = app;
 
     this._initOptions();
     this._injectFunnel();
   },
-  _initOptions: function() {
-    var defaultOptions = {
+  _initOptions() {
+    let defaultOptions = {
       enabled: this.app.env === 'production',
       exclude: []
     };
 
     this.options = this.app.options.funnel || {};
 
-    for (var option in defaultOptions) {
+    for (let option in defaultOptions) {
       if (!this.options.hasOwnProperty(option)) {
         this.options[option] = defaultOptions[option];
       }
     }
   },
-  _injectFunnel: function() {
+  _injectFunnel() {
     if (!this.options.enabled) {
       return;
     }
 
-    var options = this.options;
+    let options = this.options;
 
-    var appAndDependencies = this.app.appAndDependencies;
+    let appAndDependencies = this.app.appAndDependencies;
     this.app.appAndDependencies = function() {
-        var tree = appAndDependencies.apply(this, arguments);
+        let tree = appAndDependencies.apply(this, arguments);
 
         tree = new Funnel(tree, {
             exclude: options.exclude,
