@@ -1,9 +1,10 @@
-/*jshint node:true*/
-/* global require, module */
-var EmberAddon = require('ember-cli/lib/broccoli/ember-addon');
+/* eslint-env node */
+'use strict';
+
+const EmberAddon = require('ember-cli/lib/broccoli/ember-addon');
 
 module.exports = function(defaults) {
-  var funnel;
+  let funnel;
   switch (process.env.TEST_SCENARIO) {
     case undefined:
     case '1':
@@ -19,8 +20,8 @@ module.exports = function(defaults) {
       };
       break;
   }
-  var app = new EmberAddon(defaults, {
-    funnel: funnel
+  let app = new EmberAddon(defaults, {
+    funnel
   });
 
   /*
