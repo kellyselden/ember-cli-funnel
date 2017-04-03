@@ -1,6 +1,6 @@
 {
   "name": "ember-cli-funnel",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "description": "Exclude files from an ember build",
   "keywords": [
     "broccoli",
