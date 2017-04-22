@@ -1,37 +1,35 @@
-import { module } from 'qunit';
-import { test } from 'ember-qunit';
+import { test } from 'qunit';
+import moduleForAcceptance from '../../tests/helpers/module-for-acceptance';
 import config from 'dummy/config/environment';
 
-module('Acceptance | funnel tests');
+moduleForAcceptance('Acceptance | funnel tests');
 
 switch (config.testScenario) {
   case undefined:
   case '1':
     test('it includes properly', function(assert) {
-      assert.expect(1);
+      visit('/');
 
-      require('dummy/controllers/included');
-
-      assert.ok(true);
+      andThen(function() {
+        assert.ok(find('.included').length);
+      });
     });
 
     test('it excludes properly', function(assert) {
-      assert.expect(1);
+      visit('/');
 
-      try {
-        require('dummy/controllers/excluded');
-      } catch (err) {
-        assert.ok(true);
-      }
+      andThen(function() {
+        assert.notOk(find('.excluded').length);
+      });
     });
     break;
   case '2':
     test('it doesn\'t exclude when disabled', function(assert) {
-      assert.expect(1);
+      visit('/');
 
-      require('dummy/controllers/excluded');
-
-      assert.ok(true);
+      andThen(function() {
+        assert.ok(find('.excluded').length);
+      });
     });
     break;
 }

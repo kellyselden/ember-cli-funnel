@@ -10,13 +10,13 @@ module.exports = function(defaults) {
     case '1':
       funnel = {
         enabled: true,
-        exclude: ['dummy/controllers/excluded.js']
+        exclude: ['dummy/services/excluded.js']
       };
       break;
     case '2':
       funnel = {
         enabled: false,
-        exclude: ['dummy/controllers/excluded.js']
+        exclude: ['dummy/services/excluded.js']
       };
       break;
   }
