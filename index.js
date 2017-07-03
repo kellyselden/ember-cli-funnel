@@ -34,14 +34,14 @@ module.exports = {
 
     let appAndDependencies = this.app.appAndDependencies;
     this.app.appAndDependencies = function() {
-        let tree = appAndDependencies.apply(this, arguments);
+      let tree = appAndDependencies.apply(this, arguments);
 
-        tree = new Funnel(tree, {
-            exclude: options.exclude,
-            description: 'Funnel: ' + this.name
-        });
+      tree = new Funnel(tree, {
+        exclude: options.exclude,
+        description: 'Funnel: ' + this.name
+      });
 
-        return tree;
+      return tree;
     };
   }
 };
