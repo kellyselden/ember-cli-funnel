@@ -17,9 +17,9 @@ ember install ember-cli-funnel
 ```js
 // ember-cli-build.js
 
-var app = new EmberApp(defaults, {
+let app = new EmberApp(defaults, {
   funnel: {
-    exclude: [defaults.project.pkg.name + '/routes/style-guide/**/*']
+    exclude: [`${defaults.project.pkg.name}/routes/style-guide/**/*`]
   }
 });
 ```
@@ -41,14 +41,14 @@ npm install git-repo-info --save-dev
 ```js
 // ember-cli-build.js
 
-var getRepoInfo = require('git-repo-info');
+let getRepoInfo = require('git-repo-info');
 
-var info = getRepoInfo();
+let info = getRepoInfo();
 
-var app = new EmberApp(defaults, {
+let app = new EmberApp(defaults, {
   funnel: {
     enabled: info.branch === 'master',
-    exclude: [defaults.project.pkg.name + '/routes/style-guide/**/*']
+    exclude: [`${defaults.project.pkg.name}/routes/style-guide/**/*`]
   }
 });
 ```
@@ -70,21 +70,21 @@ Exclude different files for different environments
 ```js
 // ember-cli-build.js
 
-var exclude = [];
+let exclude = [];
 
 switch (EmberApp.env()) {
   case 'development':
-    exclude.push(defaults.project.pkg.name + '/routes/prod-only/**/*');
+    exclude.push(`${defaults.project.pkg.name}/routes/prod-only/**/*`);
     break;
   case 'production':
-    exclude.push(defaults.project.pkg.name + '/routes/dev-only/**/*');
+    exclude.push(`${defaults.project.pkg.name}/routes/dev-only/**/*`);
     break;
 }
 
-var app = new EmberApp(defaults, {
+let app = new EmberApp(defaults, {
   funnel: {
     enabled: true,
-    exclude: exclude
+    exclude
   }
 });
 ```
