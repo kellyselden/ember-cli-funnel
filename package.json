@@ -20,7 +20,7 @@
     "test": "ember test"
   },
   "dependencies": {
-    "broccoli-funnel": "^1.0.6"
+    "broccoli-funnel": "^2.0.0"
   },
   "devDependencies": {
     "ember-cli": "~2.14.2",
