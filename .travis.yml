@@ -16,8 +16,12 @@ cache:
     - $HOME/.npm
 
 env:
-  - TEST_SCENARIO=1
-  - TEST_SCENARIO=2
+  global:
+    # See https://git.io/vdao3 for details.
+    - JOBS=1
+  matrix:
+    - TEST_SCENARIO=1
+    - TEST_SCENARIO=2
 
 before_install:
   - npm config set spin false
