@@ -1,8 +1,11 @@
-import Ember from 'ember';
+import { getOwner } from '@ember/application';
+import { computed } from '@ember/object';
+import { inject as service } from '@ember/service';
+import Controller from '@ember/controller';
 
-export default Ember.Controller.extend({
-  included: Ember.inject.service(),
-  excluded: Ember.computed(function() {
-    return Ember.getOwner(this).lookup('service:excluded');
+export default Controller.extend({
+  included: service(),
+  excluded: computed(function() {
+    return getOwner(this).lookup('service:excluded');
   })
 });
