@@ -55,5 +55,22 @@ module.exports = {
 
       return tree;
     };
+  },
+
+  preprocessTree(type, tree) {
+    if (!this.options.enabled) {
+      return tree;
+    }
+
+    let options = this.options;
+
+    if (type === 'css') {
+      tree = new Funnel(tree, {
+        exclude: options.exclude,
+        description: 'Funnel (css): ' + this.name
+      });
+    }
+
+    return tree;
   }
 };

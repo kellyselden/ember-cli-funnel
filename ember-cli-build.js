@@ -7,6 +7,7 @@ module.exports = function(defaults) {
   let funnel;
   let exclude = [
     'dummy/services/excluded.js',
+    'app/styles/app.css',
     'dummy/tests/unit/services/excluded-test.js'
   ];
   switch (process.env.TEST_SCENARIO) {

@@ -7,28 +7,23 @@ moduleForAcceptance('Acceptance | funnel tests');
 switch (config.testScenario) {
   case undefined:
   case '1':
-    test('it includes properly', function(assert) {
+    test('enabled', function(assert) {
       visit('/');
 
       andThen(function() {
-        assert.ok(find('.included').length);
-      });
-    });
-
-    test('it excludes properly', function(assert) {
-      visit('/');
-
-      andThen(function() {
-        assert.notOk(find('.excluded').length);
+        assert.ok(find('.included').length, 'it includes properly');
+        assert.notOk(find('.excluded').length, 'it excludes properly');
+        assert.equal(find('.excluded-style').css('margin-top'), '0px', 'it excludes styles');
       });
     });
     break;
   case '2':
-    test('it doesn\'t exclude when disabled', function(assert) {
+    test('disabled', function(assert) {
       visit('/');
 
       andThen(function() {
-        assert.ok(find('.excluded').length);
+        assert.ok(find('.excluded').length, 'it doesn\'t exclude when disabled');
+        assert.equal(find('.excluded-style').css('margin-top'), '123px', 'it doesn\'t exclude styles when disabled');
       });
     });
     break;
