@@ -19,7 +19,10 @@ ember install ember-cli-funnel
 
 let app = new EmberApp(defaults, {
   funnel: {
-    exclude: [`${defaults.project.pkg.name}/routes/style-guide/**/*`]
+    exclude: [
+      `${defaults.project.pkg.name}/routes/style-guide/**/*`,
+      'addon-tree-output/some-addon/styles/**/*.scss'
+    ]
   }
 });
 ```
