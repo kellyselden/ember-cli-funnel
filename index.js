@@ -38,7 +38,19 @@ module.exports = {
 
       tree = new Funnel(tree, {
         exclude: options.exclude,
-        description: 'Funnel: ' + this.name
+        description: 'Funnel (appAndDependencies): ' + this.name
+      });
+
+      return tree;
+    };
+
+    let _processedTestsTree = this.app._processedTestsTree;
+    this.app._processedTestsTree = function() {
+      let tree = _processedTestsTree.apply(this, arguments);
+
+      tree = new Funnel(tree, {
+        exclude: options.exclude,
+        description: 'Funnel (_processedTestsTree): ' + this.name
       });
 
       return tree;

@@ -5,18 +5,22 @@ const EmberAddon = require('ember-cli/lib/broccoli/ember-addon');
 
 module.exports = function(defaults) {
   let funnel;
+  let exclude = [
+    'dummy/services/excluded.js',
+    'dummy/tests/unit/services/excluded-test.js'
+  ];
   switch (process.env.TEST_SCENARIO) {
     case undefined:
     case '1':
       funnel = {
         enabled: true,
-        exclude: ['dummy/services/excluded.js']
+        exclude
       };
       break;
     case '2':
       funnel = {
         enabled: false,
-        exclude: ['dummy/services/excluded.js']
+        exclude
       };
       break;
   }
