@@ -1,3 +1,4 @@
+/* global requirejs */
 import { test } from 'qunit';
 import moduleForAcceptance from '../../tests/helpers/module-for-acceptance';
 import config from 'dummy/config/environment';
@@ -14,6 +15,7 @@ switch (config.testScenario) {
         assert.ok(find('.included').length, 'it includes properly');
         assert.notOk(find('.excluded').length, 'it excludes properly');
         assert.equal(find('.excluded-style').css('margin-top'), '0px', 'it excludes styles');
+        assert.notOk(requirejs.entries['my-addon/utils/my-util']);
       });
     });
     break;
@@ -24,6 +26,7 @@ switch (config.testScenario) {
       andThen(function() {
         assert.ok(find('.excluded').length, 'it doesn\'t exclude when disabled');
         assert.equal(find('.excluded-style').css('margin-top'), '123px', 'it doesn\'t exclude styles when disabled');
+        assert.ok(requirejs.entries['my-addon/utils/my-util']);
       });
     });
     break;
