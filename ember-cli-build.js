@@ -8,7 +8,8 @@ module.exports = function(defaults) {
   let exclude = [
     'dummy/services/excluded.js',
     'app/styles/app.css',
-    'dummy/tests/unit/services/excluded-test.js'
+    'dummy/tests/unit/services/excluded-test.js',
+    'addon-tree-output/my-addon/utils/my-util.js'
   ];
   switch (process.env.TEST_SCENARIO) {
     case undefined:
