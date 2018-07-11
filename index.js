@@ -4,6 +4,7 @@ const Funnel = require('broccoli-funnel');
 
 module.exports = {
   name: 'ember-cli-funnel',
+
   included(app) {
     this.app = app;
 
@@ -29,9 +30,9 @@ module.exports = {
       return;
     }
 
-    let options = this.options;
+    let { options } = this;
 
-    let appAndDependencies = this.app.appAndDependencies;
+    let { appAndDependencies } = this.app;
     this.app.appAndDependencies = function() {
       let tree = appAndDependencies.apply(this, arguments);
 
@@ -43,7 +44,7 @@ module.exports = {
       return tree;
     };
 
-    let _processedTestsTree = this.app._processedTestsTree;
+    let { _processedTestsTree } = this.app;
     this.app._processedTestsTree = function() {
       let tree = _processedTestsTree.apply(this, arguments);
 
@@ -61,7 +62,7 @@ module.exports = {
       return tree;
     }
 
-    let options = this.options;
+    let { options } = this;
 
     if (type === 'css') {
       tree = new Funnel(tree, {

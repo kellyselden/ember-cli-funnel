@@ -13,8 +13,8 @@ module('Acceptance | funnel', function(hooks) {
       test('enabled', async function(assert) {
         await visit('/');
 
-        assert.ok(find('.included'), 'it includes properly');
-        assert.notOk(find('.excluded'), 'it excludes properly');
+        assert.dom('.included').exists('it includes properly');
+        assert.dom('.excluded').doesNotExist('it excludes properly');
         assert.equal(window.getComputedStyle(find('.excluded-style')).marginTop, '0px', 'it excludes styles');
         assert.notOk(requirejs.entries['my-addon/utils/my-util']);
       });
@@ -23,7 +23,7 @@ module('Acceptance | funnel', function(hooks) {
       test('disabled', async function(assert) {
         await visit('/');
 
-        assert.ok(find('.excluded'), 'it doesn\'t exclude when disabled');
+        assert.dom('.excluded').exists('it doesn\'t exclude when disabled');
         assert.equal(window.getComputedStyle(find('.excluded-style')).marginTop, '123px', 'it doesn\'t exclude styles when disabled');
         assert.ok(requirejs.entries['my-addon/utils/my-util']);
       });
