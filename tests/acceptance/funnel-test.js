@@ -1,33 +1,32 @@
 /* global requirejs */
-import { test } from 'qunit';
-import moduleForAcceptance from '../../tests/helpers/module-for-acceptance';
+import { module, test } from 'qunit';
+import { find, visit } from '@ember/test-helpers';
+import { setupApplicationTest } from 'ember-qunit';
 import config from 'dummy/config/environment';
 
-moduleForAcceptance('Acceptance | funnel tests');
+module('Acceptance | funnel', function(hooks) {
+  setupApplicationTest(hooks);
 
-switch (config.testScenario) {
-  case undefined:
-  case '1':
-    test('enabled', function(assert) {
-      visit('/');
+  switch (config.testScenario) {
+    case undefined:
+    case '1':
+      test('enabled', async function(assert) {
+        await visit('/');
 
-      andThen(function() {
-        assert.ok(find('.included').length, 'it includes properly');
-        assert.notOk(find('.excluded').length, 'it excludes properly');
-        assert.equal(find('.excluded-style').css('margin-top'), '0px', 'it excludes styles');
+        assert.ok(find('.included'), 'it includes properly');
+        assert.notOk(find('.excluded'), 'it excludes properly');
+        assert.equal(window.getComputedStyle(find('.excluded-style')).marginTop, '0px', 'it excludes styles');
         assert.notOk(requirejs.entries['my-addon/utils/my-util']);
       });
-    });
-    break;
-  case '2':
-    test('disabled', function(assert) {
-      visit('/');
+      break;
+    case '2':
+      test('disabled', async function(assert) {
+        await visit('/');
 
-      andThen(function() {
-        assert.ok(find('.excluded').length, 'it doesn\'t exclude when disabled');
-        assert.equal(find('.excluded-style').css('margin-top'), '123px', 'it doesn\'t exclude styles when disabled');
+        assert.ok(find('.excluded'), 'it doesn\'t exclude when disabled');
+        assert.equal(window.getComputedStyle(find('.excluded-style')).marginTop, '123px', 'it doesn\'t exclude styles when disabled');
         assert.ok(requirejs.entries['my-addon/utils/my-util']);
       });
-    });
-    break;
-}
+      break;
+  }
+});
