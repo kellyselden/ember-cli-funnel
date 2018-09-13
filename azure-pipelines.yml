@@ -8,8 +8,8 @@ pool:
 
 variables:
   matrix:
-  - TEST_SCENARIO=1
-  - TEST_SCENARIO=2
+  - TEST_SCENARIO: 1
+  - TEST_SCENARIO: 2
 
 steps:
 - task: NodeTool@0
