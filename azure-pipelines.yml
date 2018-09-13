@@ -6,10 +6,12 @@
 pool:
   vmImage: 'win1803'
 
-variables:
+strategy:
   matrix:
-  - TEST_SCENARIO: 1
-  - TEST_SCENARIO: 2
+    TEST_SCENARIO_1:
+      TEST_SCENARIO: 1
+    TEST_SCENARIO_2:
+      TEST_SCENARIO: 2
 
 steps:
 - task: NodeTool@0
