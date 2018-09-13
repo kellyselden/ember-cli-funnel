@@ -6,12 +6,9 @@
 pool:
   vmImage: 'win1803'
 
-jobs:
-- job: TEST_SCENARIO=1
-  variables:
+variables:
+  matrix:
     TEST_SCENARIO: 1
-- job: TEST_SCENARIO=2
-  variables:
     TEST_SCENARIO: 2
 
 steps:
