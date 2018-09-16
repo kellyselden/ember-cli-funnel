@@ -20,6 +20,7 @@ steps:
   displayName: 'Install Node.js'
 
 - script: |
+    echo hello
     npm install -g npm
     npm --version
     npm install
