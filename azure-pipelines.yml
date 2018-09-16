@@ -20,6 +20,10 @@ steps:
   displayName: 'Install Node.js'
 
 - script: |
+    cinst GoogleChrome -y
+  displayName: 'Install Chrome'
+
+- script: |
     echo multiline npm isn't working
     npm install -g npm && npm install && npm test
   displayName: 'npm install and build'
