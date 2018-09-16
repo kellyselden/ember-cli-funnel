@@ -19,9 +19,9 @@ steps:
     versionSpec: '6.x'
   displayName: 'Install Node.js'
 
-- script:
-    - npm install -g npm
-    - npm --version
-    - npm install
-    - npm test
+- script: |
+    npm install -g npm
+    npm --version
+    npm install
+    npm test
   displayName: 'npm install and build'
