@@ -4,6 +4,7 @@ ember-cli-funnel
 [![Greenkeeper badge](https://badges.greenkeeper.io/kellyselden/ember-cli-funnel.svg)](https://greenkeeper.io/)
 [![npm version](https://badge.fury.io/js/ember-cli-funnel.svg)](https://badge.fury.io/js/ember-cli-funnel)
 [![Build Status](https://travis-ci.org/kellyselden/ember-cli-funnel.svg?branch=master)](https://travis-ci.org/kellyselden/ember-cli-funnel)
+[![Build Status](https://dev.azure.com/kellyselden/ember-cli-funnel/_apis/build/status/kellyselden.ember-cli-funnel)](https://dev.azure.com/kellyselden/ember-cli-funnel/_build/latest?definitionId=1)
 
 Exclude files from an ember build
 

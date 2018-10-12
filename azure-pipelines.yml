@@ -22,5 +22,8 @@ steps:
 
 - script: |
     echo multiline npm isn't working
-    npm install -g npm && npm install && npm test
+    echo https://github.com/ember-cli/ember-cli-update/issues/424#issuecomment-428659475
+    call npm install -g npm
+    call npm install
+    call npm test
   displayName: 'npm install and build'
