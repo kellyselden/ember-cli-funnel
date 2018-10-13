@@ -20,10 +20,8 @@ steps:
     versionSpec: '6.x'
   displayName: 'Install Node.js'
 
-- script: |
-    echo multiline npm isn't working
-    echo https://github.com/ember-cli/ember-cli-update/issues/424#issuecomment-428659475
-    call npm install -g npm
-    call npm install
-    call npm test
+- powershell: |
+    npm install -g npm
+    npm install
+    npm test
   displayName: 'npm install and build'
