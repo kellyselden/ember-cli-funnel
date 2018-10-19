@@ -39,6 +39,7 @@
     "eslint-plugin-ember": "^5.0.0",
     "eslint-plugin-node": "^6.0.1",
     "loader.js": "^4.2.3",
+    "my-addon": "file:./lib/my-addon",
     "qunit-dom": "^0.6.2"
   },
   "engines": {
@@ -46,8 +47,6 @@
   },
   "ember-addon": {
     "configPath": "tests/dummy/config",
-    "paths": [
-      "lib/my-addon"
-    ]
+    "paths": []
   }
 }
