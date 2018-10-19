@@ -46,7 +46,6 @@
     "node": "6.* || 8.* || >= 10.*"
   },
   "ember-addon": {
-    "configPath": "tests/dummy/config",
-    "paths": []
+    "configPath": "tests/dummy/config"
   }
 }
