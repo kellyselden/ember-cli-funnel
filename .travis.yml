@@ -5,6 +5,10 @@ node_js:
   # so that your addon works for all apps
   - "6"
 
+os:
+  - linux
+  - windows
+
 sudo: false
 dist: trusty
 
